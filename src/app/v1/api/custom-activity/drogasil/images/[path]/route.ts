@@ -5,7 +5,7 @@ import mime from "mime"; // npm install mime
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { path: string } }
+  { params }: { params: Promise<{ path: string }> }
 ) {
   const { path } = await params;
 
@@ -22,6 +22,9 @@ export async function GET(
         "Content-Type": mimeType,
       },
     });
+       
+   
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
     return NextResponse.json({ error: "File not found" }, { status: 404 });
   }

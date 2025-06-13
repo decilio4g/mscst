@@ -20,6 +20,7 @@ export async function GET() {
         'Content-Type': 'text/html',
       },
     });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
     return NextResponse.json({ error: 'File not found' }, { status: 404 });
   }

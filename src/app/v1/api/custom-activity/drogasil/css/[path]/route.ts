@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { path: string } }
+  { params }: { params: Promise<{ path: string }> }
 ) {
 
   const { path } = await params;
