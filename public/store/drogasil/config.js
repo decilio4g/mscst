@@ -21,7 +21,7 @@ define(function (require) {
       execute: {
         inArguments: [],
         outArguments: [],
-        url: 'https://0e9c-2804-7f0-20-3f1f-6436-bd4d-6a8c-84e7.ngrok-free.app/v1/api/custom-activity/drogasil/execute',
+        url: 'https://50c8-2804-7f0-20-3f1f-6436-bd4d-6a8c-84e7.ngrok-free.app/v1/api/custom-activity/drogasil/execute',
         verb: 'POST',
         body: '',
         header: '',
