@@ -30,24 +30,28 @@ export async function POST(request: NextRequest) {
 
   console.log({ decodedArgs });
 
-  await axios.post(
-    `${process.env.NEXT_PUBLIC_MIDDLEWARE_URL}`,
-    {
-      template: decodedArgs.template,
-      title: decodedArgs.title,
-      message: decodedArgs.message,
-      media_url: decodedArgs.media_url,
-      url: decodedArgs.url,
-      vucCode: decodedArgs.vuc_code,
-      brand: decodedArgs.brand,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${process.env.NEXT_PUBLIC_MIDDLEWARE_AUTH_TOKEN}`,
+  try {
+    await axios.post(
+      `https://api-rd-internal-qa.raiadrogasil.io/v1/api/msatomjavacommunication/custom-messaging`,
+      {
+        template: decodedArgs.template,
+        title: decodedArgs.title,
+        message: decodedArgs.message,
+        media_url: decodedArgs.media_url,
+        url: decodedArgs.url,
+        vucCode: decodedArgs.vuc_code,
+        brand: decodedArgs.brand,
       },
-    },
-  );
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Basic cmQtcWE6c2Vuc2VkaWE=`,
+        },
+      }
+    );
+  } catch (err) {
+    console.log({ err });
+  }
 
   return NextResponse.json(
     { message: "Publish", success: true },
