@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
+import axios from "axios";
 
 type CustomPayload = {
   inArguments: [
@@ -28,6 +29,25 @@ export async function POST(request: NextRequest) {
   const decodedArgs = decoded.inArguments[0];
 
   console.log({ decodedArgs });
+
+  await axios.post(
+    `${process.env.NEXT_PUBLIC_MIDDLEWARE_URL}`,
+    {
+      template: decodedArgs.template,
+      title: decodedArgs.title,
+      message: decodedArgs.message,
+      media_url: decodedArgs.media_url,
+      url: decodedArgs.url,
+      vucCode: decodedArgs.vuc_code,
+      brand: decodedArgs.brand,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${process.env.NEXT_PUBLIC_MIDDLEWARE_AUTH_TOKEN}`,
+      },
+    },
+  );
 
   return NextResponse.json(
     { message: "Publish", success: true },
