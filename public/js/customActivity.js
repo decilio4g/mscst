@@ -147,7 +147,7 @@ define(function (require) {
         message,
         media_url: mediaUrl,
         url,
-        vuc_cod: vucCodeField,
+        vuc_cod: "{{Event.DEAudience-c07046e5-55d1-5578-9e92-e683952b7d9c.vucCode}}",
         brand: 'DROGASIL',
       },
     ];
