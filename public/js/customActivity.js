@@ -112,11 +112,11 @@ define(function (require) {
       return;
     }
 
-    console.log(JSON.stringify(dataDE[vucCodeField]));
-    console.log(JSON.stringify(dataDE));
+    console.log('dataDE[vucCodeField]', JSON.stringify(dataDE[vucCodeField]));
+    console.log('2',JSON.stringify(dataDE));
 
-    console.log(JSON.stringify(schemaDE));
-    console.log(JSON.stringify(vucCodeField));
+    console.log('3', JSON.stringify(schemaDE));
+    console.log('4',JSON.stringify(vucCodeField));
 
     // const brand = baseUrl.replace(/.*custom-activity\/([^/]+)\/execute.*/, '$1').toUpperCase();
     // const listVucCode = extrairUUIDs(schemaDE);
@@ -147,7 +147,7 @@ define(function (require) {
         message,
         media_url: mediaUrl,
         url,
-        vuc_cod: "{{Event.DEAudience-c07046e5-55d1-5578-9e92-e683952b7d9c.vucCode}}",
+        vuc_cod: dataDE[vucCodeField],
         brand: 'DROGASIL',
       },
     ];
