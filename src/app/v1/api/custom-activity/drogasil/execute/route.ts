@@ -16,9 +16,12 @@ type CustomPayload = {
 };
 
 export async function POST(request: NextRequest) {
-  const token = request.body?.toString() as string;
-  const jwtSecret = process.env.NEXT_PUBLIC_JWT_SECRET_DROGASIL as string;
+  const body = await request.text();
+  const token = body?.toString() as string;
 
+  console.log(token);
+  const jwtSecret = process.env.NEXT_PUBLIC_JWT_SECRET_DROGASIL as string;
+  console.log({ jwtSecret });
   const decoded = jwt.verify(token, jwtSecret, {
     algorithms: ["HS256"],
   }) as unknown as CustomPayload;
